@@ -1,0 +1,24 @@
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	&__logo {
+		font-size: 1.6rem;
+	}
+	&__icons {
+		width: 25%;
+		display: flex;
+		justify-content: space-between;
+	}
+	&__logo,
+	&__basket,
+	&__hamburger {
+		cursor: pointer;
+	}
+	&__basket {
+		font-size: 1.3rem;
+	}
+	&__hamburger {
+		font-size: 1.5rem;
+	}
+}
