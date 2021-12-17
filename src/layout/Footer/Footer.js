@@ -15,10 +15,10 @@ const Footer = () => {
         <Row>
           <Col xs={12} md={6} className='footer__links'>
             {links.map(link=> (
-              <Link to='/' key={link.id} className='mb-2 footer__link'>{link.link}</Link>
+              <Link to={link.path} key={link.id} className='mb-2 footer__link'>{link.link}</Link>
             ))}
           </Col>
-          <Col md={6} className='mt-3'>
+          <Col md={6}>
           <h3 className='footer__title'>Bądź z nami na:</h3>
           <div className='footer__icon'>
             {social.map(iconSocial => {

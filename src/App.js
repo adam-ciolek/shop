@@ -5,9 +5,6 @@ import Main from './layout/Main/Main';
 import Footer from './layout/Footer/Footer';
 
 
-import {Container} from 'react-bootstrap';
-import './coustom.scss'
-
 const App = () => {
   return (
     <>

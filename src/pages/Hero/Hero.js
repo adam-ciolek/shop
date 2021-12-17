@@ -24,7 +24,7 @@ const Hero = () => {
                       {item.info}
                     </Card.Text>
                     <Card.Text>
-                      <Link to='/' className='card__links'>More</Link>
+                      <Link to={item.path} className='card__links'>More</Link>
                     </Card.Text>
                   </Card.Body>
                 </Card>

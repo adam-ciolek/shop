@@ -1,24 +1,33 @@
 import React,{useState} from 'react'
 import {Link} from 'react-router-dom';
 
-
+import { links } from '../../data';
 import {FcDebian} from 'react-icons/fc';
 import { BsFillBasketFill,BsListNested } from "react-icons/bs";
+import {IoIosClose} from "react-icons/io";
 import {Container} from 'react-bootstrap';
 import './Navbar.scss';
 
 
 const NavbarMenu = () => {
-  const [Hamburger,setHamburger] = useState(false);
+  const [hamburger,setHamburger] = useState(false);
 
   return (
     <>
       <Container>
         <div className='nav mt-3 mb-3'>
-          <FcDebian className='nav__logo'/>
+          <Link to='/home'><FcDebian className='nav__logo'/></Link>
+          <div className={`${hamburger ? 'menu nav__menu' : 'nav__menu menu-close'}`}>
+            {links.map(item => {
+              const {id,link,path} = item;
+              return (
+                <Link key={id} to={path} className='nav__menu__link'>{link}</Link>
+              )
+            })}
+          </div>
           <div className='nav__icons'>
-            <BsFillBasketFill className="nav__basket"/>
-            <BsListNested onClick={()=> setHamburger(true)} className="nav__hamburger"/>
+            <Link to='/shop'><BsFillBasketFill className="nav__basket"/></Link>
+            {hamburger ? <IoIosClose onClick={() => setHamburger(false)} className="nav__hamburger"/> : <BsListNested onClick={()=> setHamburger(!hamburger)} className="nav__hamburger"/>}
           </div>
         </div>
       </Container>

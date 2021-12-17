@@ -32,24 +32,28 @@ export const homeItems =
         img: 'https://i.postimg.cc/TPLnBkYh/pexels-ivan-oboleninov-2916814.jpg',
         price: 120,
         info: 'Sukienka mini',
+        path:'/kobieta/sukienki'
     },
     {
         id: 2,
         img: 'https://i.postimg.cc/FRzwtXk3/pexels-harsh-kushwaha-1689731.jpg',
         price: 100,
         info: 'Pikowany płaszcz',
+        path: '/kobieta/płaszcze'
     },
     {
         id: 3,
         img: 'https://i.postimg.cc/XqFH3jjG/pexels-marlene-lepp-nen-1183266.jpg',
         price: 90,
         info: 'Dzianinowy sweter z kapturem',
+        path: '/mezczyzna/bluzy'
     },
     {
         id: 4,
         img: 'https://i.postimg.cc/XYyJbtdM/pexels-godisable-jacob-859195.jpg',
         price: 199.99,
         info: 'Sukienka maxi',
+        path: 'kobieta/sukienki'
     },
 ]
 
@@ -57,27 +61,33 @@ export const links =
 [
     {
         id:1,
-        link: 'Nowości'
+        link: 'Nowości',
+        path: '/nowosci',
     },
     {
         id:2,
-        link: 'Kobieta'
+        link: 'Kobieta',
+        path: '/kobieta',
     },
     {
         id:3,
-        link: 'Mężczyzna'
+        link: 'Mężczyzna',
+        path: '/mezczyzna',
     },
     {
         id:4,
-        link: 'Dziewczynka'
+        link: 'Dziewczynka',
+        path: '/dziewczynka',
     },
     {
         id:5,
-        link: 'Chłopiec'
+        link: 'Chłopiec',
+        path: '/chłopiec',
     },
     {
         id:6,
-        link: 'Winter offer Do -50%'
+        link: 'Winter offer Do -50%',
+        path: '/sale',
     }
 ]
 
