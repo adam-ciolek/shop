@@ -1,18 +1,21 @@
-import React from 'react'
-
-import Navbar from './layout/Navbar/Navbar';
-import Main from './layout/Main/Main';
-import Footer from './layout/Footer/Footer';
-
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { Cart, Error, Products } from "./pages";
+import { SingleProduct, Navbar } from "./components";
 
 const App = () => {
-  return (
-    <>
-      <Navbar />
-      <Main />
-      <Footer />
-    </>
-  )
-}
+	return (
+		<div className="wrapper">
+			<Navbar />
+			<Routes>
+				<Route path="/" element={<Products />}>
+					<Route path="/product/:id" element={<SingleProduct />} />
+				</Route>
+				<Route path="/cart" element={<Cart />} />
+				<Route path="*" element={<Error />} />
+			</Routes>
+		</div>
+	);
+};
 
-export default App
+export default App;
