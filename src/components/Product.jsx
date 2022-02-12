@@ -1,9 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useGlobalContext } from "../context/contextProduct";
 
 const Product = ({ products, loading }) => {
-	const { addToCart } = useGlobalContext();
+	const { fetchSingleProduct, url } = useGlobalContext();
+
+	const handleSingleProduct = (id) => {
+		fetchSingleProduct(`${url}/${id}`);
+	};
 
 	if (loading) {
 		return <h2>Loading...</h2>;
@@ -21,14 +26,9 @@ const Product = ({ products, loading }) => {
 							<h4>{title}</h4>
 							<div className="btn">
 								<p>${price}</p>
-								<button
-									type="button"
-									onClick={() =>
-										addToCart(id, image, title, description, price)
-									}
-								>
-									Add to card
-								</button>
+								<Link to={`/${id}`} onClick={() => handleSingleProduct(id)}>
+									More
+								</Link>
 							</div>
 						</div>
 					</article>
