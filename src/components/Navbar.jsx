@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { links } from "../util/data";
+import { useGlobalContext } from "../context/contextProduct";
 
 const Navbar = () => {
+	const { total_items } = useGlobalContext();
 	return (
 		<>
 			<Wrapper>
@@ -15,6 +17,7 @@ const Navbar = () => {
 						</div>
 					);
 				})}
+				{total_items}
 			</Wrapper>
 			<hr />
 		</>

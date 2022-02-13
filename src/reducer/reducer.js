@@ -5,6 +5,8 @@ import {
 	LOADING_SINGLE_PRODUCT,
 	SINGLE_PRODUCT,
 	TOGGLE_CART_ITEM_AMOUNT,
+	COUNT_CART_TOTALS,
+	REMOVE_FROM_CART,
 } from "../actions";
 
 const reducer = (state, action) => {
@@ -44,6 +46,14 @@ const reducer = (state, action) => {
 			return { ...state, add_toCart: [...state.add_toCart, newItem] };
 		}
 	}
+
+	if (action.type === REMOVE_FROM_CART) {
+		const removeCart = state.add_toCart.filter(
+			(item) => item.id !== action.payload
+		);
+		return { ...state, add_toCart: removeCart };
+	}
+
 	// SINGLE PRODUCT
 
 	if (action.type === LOADING_SINGLE_PRODUCT) {
@@ -79,6 +89,21 @@ const reducer = (state, action) => {
 			}
 		});
 		return { ...state, add_toCart: tempCart };
+	}
+	if (action.type === COUNT_CART_TOTALS) {
+		const { total_items, total_amount } = state.add_toCart.reduce(
+			(total, cartItem) => {
+				const { amount, price } = cartItem;
+				total.total_items += amount;
+				total.total_amount += price * amount;
+				return total;
+			},
+			{
+				total_amount: 0,
+				total_items: 0,
+			}
+		);
+		return { ...state, total_items, total_amount };
 	}
 };
 export default reducer;

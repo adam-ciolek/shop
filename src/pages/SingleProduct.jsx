@@ -41,12 +41,12 @@ const SingleProduct = () => {
 
 	return (
 		<>
-			<Wrapper className="section">
-				<img src={image} alt={title} />
-				<div className="info">
-					<h3>{title}</h3>
-					<p>{description}</p>
-					{product && (
+			{product && (
+				<Wrapper className="section">
+					<img src={image} alt={title} />
+					<div className="info">
+						<h3>{title}</h3>
+						<p>{description}</p>
 						<div>
 							<div className="cart">
 								<p>${price}</p>
@@ -67,9 +67,9 @@ const SingleProduct = () => {
 								Add to cart
 							</Link>
 						</div>
-					)}
-				</div>
-			</Wrapper>
+					</div>
+				</Wrapper>
+			)}
 		</>
 	);
 };
@@ -77,10 +77,17 @@ const SingleProduct = () => {
 const Wrapper = styled.section`
 	display: grid;
 	grid-template-columns: 1fr;
+	@media (min-width: 768px) {
+		grid-template-columns: 1fr 1fr;
+	}
 
 	img {
 		width: 100%;
 		display: block;
+		@media (min-width: 425px) {
+			width: 60%;
+			margin: 0 auto;
+		}
 	}
 
 	.info {

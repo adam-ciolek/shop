@@ -1,19 +1,18 @@
 import React from "react";
-import { CartShop } from ".";
+import { CartShop, CartTotals } from ".";
 import styled from "styled-components";
 import { useGlobalContext } from "../context/contextProduct";
 
 const Cart = () => {
 	const { add_toCart: items } = useGlobalContext();
 
-	console.log(items);
-
 	return (
-		<Wrapper className="section">
+		<Wrapper>
 			{items.map((item) => {
 				const { id } = item;
 				return <CartShop key={id} {...item} />;
 			})}
+			<CartTotals />
 		</Wrapper>
 	);
 };
@@ -21,14 +20,18 @@ const Cart = () => {
 const Wrapper = styled.article`
 	display: grid;
 	grid-template-columns: 1fr;
-
-	article {
-		margin-top: 3rem;
+	@media (min-width: 768px) {
+		grid-template-columns: 1fr 1fr;
+		gap: 6rem;
 	}
 
 	img {
 		width: 100%;
 		display: block;
+		@media (min-width: 425px) {
+			width: 60%;
+			margin: 0 auto;
+		}
 	}
 	.info {
 		margin-top: 2rem;

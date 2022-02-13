@@ -3,7 +3,9 @@ import React, { useContext, useEffect, useReducer } from "react";
 import reducer from "../reducer/reducer";
 import {
 	ADD_TO_CART,
+	COUNT_CART_TOTALS,
 	LOADING_SINGLE_PRODUCT,
+	REMOVE_FROM_CART,
 	SET_LOADING,
 	SET_STORIES,
 	SINGLE_PRODUCT,
@@ -30,6 +32,9 @@ const initialState = {
 	single_products: [],
 	loading_product: false,
 	stock: 10,
+	shipping_fee: 5.34,
+	total_amount: 0,
+	total_items: 0,
 };
 
 const AppProvider = ({ children }) => {
@@ -50,7 +55,6 @@ const AppProvider = ({ children }) => {
 		try {
 			const response = await axios.get(url);
 			dispatch({ type: SINGLE_PRODUCT, payload: response.data });
-			console.log(response);
 		} catch (error) {
 			console.log(error);
 		}
@@ -63,10 +67,12 @@ const AppProvider = ({ children }) => {
 		});
 	};
 
+	const removeFromCart = (id) => {
+		dispatch({ type: REMOVE_FROM_CART, payload: id });
+	};
+
 	const toggleAmount = (id, value) => {
-		console.log(id, value);
 		dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } });
-		console.log(state.add_toCart);
 	};
 
 	useEffect(() => {
@@ -74,6 +80,7 @@ const AppProvider = ({ children }) => {
 	}, []);
 
 	useEffect(() => {
+		dispatch({ type: COUNT_CART_TOTALS });
 		localStorage.setItem("cart", JSON.stringify(state.add_toCart));
 	}, [state.add_toCart]);
 
@@ -85,6 +92,7 @@ const AppProvider = ({ children }) => {
 				fetchSingleProduct,
 				url,
 				toggleAmount,
+				removeFromCart,
 			}}
 		>
 			{children}
