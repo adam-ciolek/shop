@@ -6,13 +6,17 @@ import { useGlobalContext } from "../context/contextProduct";
 const Cart = () => {
 	const { add_toCart: items } = useGlobalContext();
 
+	if (!items.length) {
+		return <h2>You card is empty.</h2>;
+	}
+
 	return (
 		<Wrapper>
 			{items.map((item) => {
 				const { id } = item;
 				return <CartShop key={id} {...item} />;
 			})}
-			<CartTotals />
+			{items.length >= 1 && <CartTotals />}
 		</Wrapper>
 	);
 };

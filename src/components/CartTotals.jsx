@@ -23,6 +23,7 @@ const CartTotals = () => {
 
 const Wrapper = styled.section`
 	margin-top: 3rem;
+	margin-bottom: 3rem;
 
 	h4 {
 		margin-bottom: 1rem;

@@ -2,9 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Product, Filters } from "../components";
 import { useGlobalContext } from "../context/contextProduct";
+import { useFilterContext } from "../context/filterProduct";
 
 const Products = () => {
-	const { all_products: products, loading } = useGlobalContext();
+	const { loading } = useGlobalContext();
+	const { filtered_products: products } = useFilterContext();
 
 	return (
 		<Wrapper className="section">
